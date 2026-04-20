@@ -30,6 +30,12 @@ LOCAL_PORT=8080
 docker run --rm -p ${LOCAL_PORT}:8080 -v ${HOME}/.config/strava-heatmap-proxy:/home/nonroot/.config/strava-heatmap-proxy:ro docker.io/patrickziegler/strava-heatmap-proxy:latest
 ```
 
+Alternatively, use the provided [docker-compose.yml](docker-compose.yml) for a one-command start:
+
+```sh
+docker compose up -d
+```
+
 This will set up a local proxy server for `https://content-a.strava.com/`.
 Every request to `http://localhost:8080/` will then be extended with session cookies before being forwarded to Strava.
 

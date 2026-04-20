@@ -15,11 +15,13 @@ jobs:
       - name: Check code format
         run: make -C strava-heatmap-proxy formatcheck
 
+      - uses: docker/setup-qemu-action@v3
+
       - uses: docker/setup-buildx-action@v3
 
       - name: Build image
         uses: docker/build-push-action@v6
         with:
           context: strava-heatmap-proxy/
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           push: false
